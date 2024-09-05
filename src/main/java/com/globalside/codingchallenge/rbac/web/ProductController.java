@@ -24,7 +24,7 @@ public class ProductController implements ProductApi {
     }
 
     @Override
-    public ProductDto getProductById(String id) {
+    public ProductDto getProductById(Integer id) {
         return productService.getProductById(id);
     }
 
@@ -34,12 +34,12 @@ public class ProductController implements ProductApi {
     }
 
     @Override
-    public ProductDto updateProduct(String id, ProductDto productDto) {
+    public ProductDto updateProduct(Integer id, ProductDto productDto) {
         return productService.updateProduct(id, productDto);
     }
 
     @Override
-    public void deleteProduct(String id) {
+    public void deleteProduct(Integer id) {
         productService.deleteProduct(id);
     }
 }

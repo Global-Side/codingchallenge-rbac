@@ -24,9 +24,14 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: price
-                  type: varchar(255)
+                  type: decimal(10,2)
                   constraints:
                     nullable: false
+              - column:
+                  name: currency
+                  type: varchar(10)
+                  constraints:
+                      nullable: false
               - column:
                   name: category
                   type: varchar(255)

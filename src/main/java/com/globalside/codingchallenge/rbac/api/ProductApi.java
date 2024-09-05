@@ -15,14 +15,14 @@ public interface ProductApi {
     List<ProductDto> getAllProducts();
 
     @GetMapping("/products/{id}")
-    ProductDto getProductById(@PathVariable("id") String id);
+    ProductDto getProductById(@PathVariable("id") Integer id);
 
     @PostMapping("/products")
     ProductDto createProduct(@RequestBody ProductDto productDto);
 
     @PutMapping("/products/{id}")
-    ProductDto updateProduct(@PathVariable("id") String id, @RequestBody ProductDto productDto);
+    ProductDto updateProduct(@PathVariable("id") Integer id, @RequestBody ProductDto productDto);
 
     @DeleteMapping("/products/{id}")
-    void deleteProduct(@PathVariable("id") String id);
+    void deleteProduct(@PathVariable("id") Integer id);
 }

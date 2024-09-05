@@ -2,6 +2,8 @@ package com.globalside.codingchallenge.rbac.db.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -14,7 +16,9 @@ import lombok.Setter;
 public class ProductDbo {
 
     @Id
-    String id;
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
 
     @Column(name = "name")
     String name;
@@ -23,7 +27,10 @@ public class ProductDbo {
     String description;
 
     @Column(name = "price")
-    String price;
+    Double price;
+
+    @Column(name = "currency")
+    String currency;
 
     @Column(name = "category")
     String category;

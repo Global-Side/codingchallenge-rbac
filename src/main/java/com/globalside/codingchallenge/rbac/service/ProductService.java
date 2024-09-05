@@ -18,8 +18,9 @@ public class ProductService {
 
     private final ProductMapper productMapper;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, ProductMapper productMapper) {
         this.productRepository = productRepository;
+        this.productMapper = productMapper;
     }
 
     public List<ProductDto> getAllProducts() {
@@ -28,7 +29,7 @@ public class ProductService {
         return dtos;
     }
 
-    public ProductDto getProductById(String id) {
+    public ProductDto getProductById(Integer id) {
         Optional<ProductDbo> productDbo = productRepository.findById(id);
         if(productDbo.isPresent()) {
             return productMapper.toProductDto(productDbo.get());
@@ -42,7 +43,7 @@ public class ProductService {
         return productMapper.toProductDto(savedProductDbo);
     }
 
-    public ProductDto updateProduct(String id, ProductDto productDto) {
+    public ProductDto updateProduct(Integer id, ProductDto productDto) {
         Optional<ProductDbo> existingDbo = productRepository.findById(id);
         if(existingDbo.isPresent()) {
             ProductDbo updatedProductDbo = productMapper.toProductDbo(productDto);
@@ -53,7 +54,7 @@ public class ProductService {
         throw new EntityNotFoundException("Product with id " + id + " not found");
     }
 
-    public void deleteProduct(String id) {
+    public void deleteProduct(Integer id) {
         Optional<ProductDbo> productDbo = productRepository.findById(id);
         if(productDbo.isPresent()) {
             productRepository.deleteById(id);
